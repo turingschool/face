@@ -10,7 +10,7 @@ class TuringFaceDataStoreTest < Minitest::Test
   def test_it_stores_responses
     ds = Turing::Face::DataStore.instance
 
-    fake_file = Turing::Face::FetcherFile.new('projects/feed_engine', '# Feed Engine\n\nThis is the engine of feeds.')
+    fake_file = Turing::Face::File.new('projects/feed_engine', '# Feed Engine\n\nThis is the engine of feeds.')
     fake_response = Turing::Face::FetcherResponse.new('turingschool/curriculum')
     fake_response.add(fake_file)
 

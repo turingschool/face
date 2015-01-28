@@ -1,4 +1,5 @@
 require 'faraday'
+require_relative 'file'
 
 module Turing
   module Face
@@ -8,7 +9,7 @@ module Turing
         files.each do |file|
           url = "https://raw.githubusercontent.com/#{repo}/master/#{file}"
           data = Faraday.get(url).body
-          file = FetcherFile.new(file, data)
+          file = Turing::Face::File.new(file, data)
           response.add(file)
         end
         response
@@ -26,15 +27,6 @@ module Turing
 
       def add(file)
         @files << file
-      end
-    end
-
-    class FetcherFile
-      attr_reader :path, :body
-
-      def initialize(path, body)
-        @path = path
-        @body = body
       end
     end
   end
