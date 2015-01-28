@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 gem 'sinatra', git: 'git://github.com/sinatra/sinatra.git'
-gem 'rack', '1.5.2'
-gem 'slim', '2.0.3'
-gem 'temple', '0.6.8'
+gem 'rack'
+gem 'slim'
+gem 'temple'
 gem "shotgun"
 gem "json"
 gem "tilt"
