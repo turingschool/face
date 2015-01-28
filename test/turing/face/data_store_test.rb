@@ -18,4 +18,18 @@ class TuringFaceDataStoreTest < Minitest::Test
     data = ds.find('curriculum', 'projects/feed_engine')
     assert data.body.include?('# Feed Engine')
   end
+
+  def test_it_counts_insertions
+    ds = Turing::Face::DataStore.instance
+    start = ds.changes
+    fake_response = Turing::Face::FetcherResponse.new('turingschool/curriculum')
+
+    ds.store(fake_response)
+    one = ds.changes
+    assert one > start
+
+    ds.store(fake_response)
+    two = ds.changes
+    assert two > one
+  end
 end
