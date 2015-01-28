@@ -2,7 +2,6 @@ require 'bundler/setup'
 
 require 'sinatra/base'
 require 'json'
-require 'pry'
 require 'singleton'
 
 require_relative 'fetcher'
