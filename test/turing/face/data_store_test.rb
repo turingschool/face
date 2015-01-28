@@ -1,4 +1,4 @@
-require 'minitest/autorun'
+require './test/test_helper'
 require './lib/turing/face/data_store'
 require './lib/turing/face/fetcher'
 

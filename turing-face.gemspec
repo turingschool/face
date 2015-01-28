@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rack-test"
   spec.add_development_dependency "rack-minitest"
+  spec.add_development_dependency "vcr"
   spec.add_dependency 'rack', '1.5.2'
   spec.add_dependency 'slim', '2.0.3'
   spec.add_dependency 'temple', '0.6.8'

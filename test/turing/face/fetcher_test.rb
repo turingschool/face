@@ -1,4 +1,4 @@
-require 'minitest/autorun'
+require './test/test_helper'
 require './lib/turing/face/fetcher'
 
 class TuringFaceFetcherTest < Minitest::Test

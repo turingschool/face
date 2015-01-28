@@ -1,8 +1,5 @@
-require 'minitest/autorun'
+require './test/test_helper'
 require './lib/turing/face/app'
-require 'rack/test'
-require "rack-minitest/test"
-require 'minitest/pride'
 
 class TuringFaceAppTest < Minitest::Test
   include Rack::Test::Methods
