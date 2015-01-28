@@ -36,6 +36,7 @@ GEM
     rack-test (0.6.3)
       rack (>= 1.0)
     rake (10.4.2)
+    redcarpet (3.2.1)
     safe_yaml (1.0.4)
     shotgun (0.9)
       rack (>= 1.0)
@@ -63,6 +64,7 @@ DEPENDENCIES
   rack-minitest
   rack-test
   rake (~> 10.0)
+  redcarpet
   shotgun
   sinatra!
   slim

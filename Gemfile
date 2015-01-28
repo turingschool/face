@@ -10,6 +10,7 @@ gem "json"
 gem "tilt"
 gem "faraday"
 gem "puma"
+gem "redcarpet"
 
 group :development do
   gem "bundler", "~> 1.7"
