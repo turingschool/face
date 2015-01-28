@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require './lib/turing/face/app'
 require 'rack/test'
 require "rack-minitest/test"
+require 'minitest/pride'
 
 class TuringFaceAppTest < Minitest::Test
   include Rack::Test::Methods
@@ -30,5 +31,24 @@ class TuringFaceAppTest < Minitest::Test
     get '/latest'
     two = JSON.parse(last_response.body)['changes']
     assert_equal one + 1, two
+  end
+
+  def test_it_renders_content
+    data = File.read('./test/support/sample_change.json')
+    post '/changes', data, "CONTENT_TYPE" => "application/json"
+
+    skip
+    get '/projects/store_engine'
+    assert last_response.ok?
+    content = last_response.body
+    refute content.include?("Second Change")
+
+    data = File.read('./test/support/sample_change_two.json')
+    post '/changes', data, "CONTENT_TYPE" => "application/json"
+
+    get '/projects/store_engine'
+    assert last_response.ok?
+    content = last_response.body
+    assert content.include?("Second Change")
   end
 end

@@ -23,9 +23,12 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rack-test"
   spec.add_development_dependency "rack-minitest"
+  spec.add_dependency 'rack', '1.5.2'
+  spec.add_dependency 'slim', '2.0.3'
+  spec.add_dependency 'temple', '0.6.8'
   spec.add_dependency "shotgun"
-  spec.add_dependency "sinatra"
+  #spec.add_dependency "sinatra"
   spec.add_dependency "json"
   spec.add_dependency "tilt"
-  spec.add_dependency 'slim', '~> 3.0'
+  spec.add_dependency "faraday"
 end
