@@ -20,6 +20,12 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "rack-test"
+  spec.add_development_dependency "rack-minitest"
   spec.add_dependency "shotgun"
   spec.add_dependency "sinatra"
+  spec.add_dependency "json"
+  spec.add_dependency "tilt"
+  spec.add_dependency 'slim', '~> 3.0'
 end
