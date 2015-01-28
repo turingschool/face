@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://raw.githubusercontent.com/turingschool/tutorials/master/projects/store_engine.markdown
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 28 Jan 2015 18:02:19 GMT
+      Server:
+      - Apache
+      Access-Control-Allow-Origin:
+      - https://render.githubusercontent.com
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000
+      Etag:
+      - '"632bf08467e6f223bb48949e8c42adf947928a2f"'
+      Content-Type:
+      - text/plain; charset=utf-8
+      Cache-Control:
+      - max-age=300
+      Content-Length:
+      - '95'
+      Accept-Ranges:
+      - bytes
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-dfw1831-DFW
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+      Vary:
+      - Authorization,Accept-Encoding
+      Expires:
+      - Wed, 28 Jan 2015 18:07:19 GMT
+      Source-Age:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |
+        # StoreEngine
+
+        I heard you like CSVs.
+
+        Repos and stuff. More. And then some.
+    http_version: 
+  recorded_at: Wed, 28 Jan 2015 18:02:19 GMT
+recorded_with: VCR 2.9.3

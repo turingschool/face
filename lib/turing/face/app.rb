@@ -30,9 +30,14 @@ module Turing
         {'changes' => store.changes}.to_json
       end
 
-      get '/projects/:name' do |name|
+      get '/:group/*' do |group, name|
         data_store = DataStore.instance
-        data_store.find(:projects, name)
+        page = data_store.find(group, name)
+        if page
+          page.body
+        else
+          status(404)
+        end
       end
     end
   end

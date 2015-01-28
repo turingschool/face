@@ -16,12 +16,28 @@ class TuringFaceAppTest < Minitest::Test
     end
   end
 
+  def test_it_renders_a_page
+    VCR.use_cassette("renders_a_page") do
+      get 'tutorials/projects/store_engine'
+      assert_equal 404, last_response.status
+
+      data = File.read('./test/support/sample_change.json')
+      post '/changes', data, "CONTENT_TYPE" => "application/json"
+      assert last_response.ok?
+
+      get 'tutorials/projects/store_engine'
+      assert last_response.ok?
+      assert last_response.body.include?("# StoreEngine")
+    end
+  end
+
   def test_it_renders_content
     data = File.read('./test/support/sample_change.json')
     post '/changes', data, "CONTENT_TYPE" => "application/json"
 
     skip
-    get '/projects/store_engine'
+    get 'tutorials/projects/store_engine'
+    binding.pry
     assert last_response.ok?
     content = last_response.body
     refute content.include?("Second Change")
