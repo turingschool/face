@@ -1,7 +1,8 @@
 module Turing
   module Face
     class File
-      attr_reader :path, :body
+      attr_reader :path
+      attr_accessor :body
 
       def initialize(path, body)
         @path = path

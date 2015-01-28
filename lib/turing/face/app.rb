@@ -6,6 +6,7 @@ require 'singleton'
 
 require_relative 'fetcher'
 require_relative 'data_store'
+require_relative 'render_pipeline'
 
 module Turing
   module Face
@@ -22,6 +23,8 @@ module Turing
         added_files = data['commits'].collect{|c| c['added']}.flatten!
         files = modified_files + added_files
         response = fetcher.fetch(repo, files)
+        renderer = RenderPipeline.new
+        rendered_response = renderer.render(response)
         DataStore.instance.store(response)
         status 200
       end

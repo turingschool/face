@@ -11,7 +11,7 @@ class TuringFaceAppTest < Minitest::Test
   def app
     Turing::Face::App
   end
-  
+
   def test_it_receives_post_data_from_github
     VCR.use_cassette("receives_post_data_from_github") do
       data = File.read('./test/support/sample_change.json')
@@ -31,7 +31,7 @@ class TuringFaceAppTest < Minitest::Test
 
       get 'tutorials/projects/store_engine'
       assert last_response.ok?
-      assert last_response.body.include?("# StoreEngine")
+      assert last_response.body.include?("<h1>StoreEngine")
     end
   end
 
