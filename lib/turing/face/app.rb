@@ -18,7 +18,9 @@ module Turing
         data = JSON.parse(request.body.read)
         fetcher = Fetcher.new
         repo = data['repository']['full_name']
-        files = data['commits'].collect{|c| c['modified']}.flatten!
+        modified_files = data['commits'].collect{|c| c['modified']}.flatten!
+        added_files = data['commits'].collect{|c| c['added']}.flatten!
+        files = modified_files + added_files
         response = fetcher.fetch(repo, files)
         DataStore.instance.store(response)
         status 200
