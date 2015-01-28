@@ -7,6 +7,10 @@ module Turing
         @path = path
         @body = body
       end
+
+      def ==(other)
+        path == other.path
+      end
     end
   end
 end

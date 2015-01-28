@@ -20,13 +20,27 @@ module Turing
         @data.detect{|file| file.path.include?(target_name)}
       end
 
+      def remove_if_existing(response)
+        response.files.each do |file|
+          existing = find(nil, file.path)
+          if existing
+            data.delete(existing)
+          end
+        end
+      end
+
       def store(response)
+        remove_if_existing(response)
         response.files.each do |file|
           @data << file
         end
         add_change
       end
-    end
 
+      def clear
+        @data = []
+        @changes = 0
+      end
+    end
   end
 end

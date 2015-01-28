@@ -32,4 +32,26 @@ class TuringFaceDataStoreTest < Minitest::Test
     two = ds.changes
     assert two > one
   end
+
+  def test_a_repeated_identifier_overwrites_the_data
+    ds = Turing::Face::DataStore.instance
+
+    fake_file = Turing::Face::File.new('projects/feed_engine', '# Feed Engine\n\nThis is the engine of feeds.')
+    fake_response = Turing::Face::FetcherResponse.new('turingschool/curriculum')
+    fake_response.add(fake_file)
+
+    assert ds.store(fake_response)
+
+    data = ds.find('curriculum', 'projects/feed_engine')
+    assert data.body.include?('# Feed Engine')
+
+    fake_file_2 = Turing::Face::File.new('projects/feed_engine', '# Feed Engine\n\nThis is the engine of feeds. It is better now!')
+    fake_response_2 = Turing::Face::FetcherResponse.new('turingschool/curriculum')
+    fake_response_2.add(fake_file_2)
+
+    assert ds.store(fake_response_2)
+
+    data = ds.find('curriculum', 'projects/feed_engine')
+    assert data.body.include?('It is better now')
+  end
 end
