@@ -21,8 +21,7 @@ module Turing
         repo = data['repository']['full_name']
         files = data['commits'].collect{|c| c['modified']}.flatten!
         response = fetcher.fetch(repo, files)
-        data_store = DataStore.instance
-        data_store.store(response)
+        DataStore.instance.store(response)
         status 200
       end
 
