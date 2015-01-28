@@ -6,6 +6,7 @@ require 'pry'
 require 'singleton'
 
 require_relative 'fetcher'
+require_relative 'data_store'
 
 module Turing
   module Face
@@ -19,8 +20,9 @@ module Turing
         fetcher = Fetcher.new
         repo = data['repository']['full_name']
         files = data['commits'].collect{|c| c['modified']}.flatten!
-        fetcher.fetch(repo, files)
-        DataStore.instance.add_change
+        response = fetcher.fetch(repo, files)
+        data_store = DataStore.instance
+        data_store.store(response)
         status 200
       end
 
@@ -32,24 +34,6 @@ module Turing
       get '/projects/:name' do |name|
         data_store = DataStore.instance
         data_store.find(:projects, name)
-      end
-    end
-
-    class DataStore
-      include Singleton
-
-      attr_reader :changes
-
-      def initialize
-        @changes = 0
-      end
-
-      def add_change
-        @changes += 1
-      end
-
-      def find
-
       end
     end
   end
