@@ -13,7 +13,6 @@ class TuringFaceAppTest < Minitest::Test
   end
 
   def test_it_receives_post_data_from_github
-    skip
     VCR.use_cassette("receives_post_data_from_github") do
       data = File.read('./test/support/sample_change.json')
       post '/changes', data, "CONTENT_TYPE" => "application/json"
@@ -22,7 +21,6 @@ class TuringFaceAppTest < Minitest::Test
   end
 
   def test_it_renders_a_page
-    skip
     VCR.use_cassette("renders_a_page") do
       get 'tutorials/projects/store_engine'
       assert_equal 404, last_response.status
