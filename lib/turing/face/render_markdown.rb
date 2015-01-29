@@ -1,5 +1,5 @@
 require 'redcarpet'
-require 'pygments'
+require 'pygmentize'
 
 module Turing
   module Face
