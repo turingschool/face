@@ -26,6 +26,7 @@ GEM
       slop (~> 3.4)
     puma (2.11.0)
       rack (>= 1.1, < 2.0)
+    pygmentize (0.0.3)
     rack (1.6.0)
     rack-minitest (0.0.10)
       json
@@ -60,6 +61,7 @@ DEPENDENCIES
   json
   pry
   puma
+  pygmentize
   rack
   rack-minitest
   rack-test

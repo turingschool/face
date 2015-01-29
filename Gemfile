@@ -11,6 +11,7 @@ gem "tilt"
 gem "faraday"
 gem "puma"
 gem "redcarpet"
+gem 'pygmentize'
 
 group :development do
   gem "bundler", "~> 1.7"
