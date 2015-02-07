@@ -12,6 +12,9 @@ gem "faraday"
 gem "puma"
 gem "redcarpet"
 gem 'pygmentize'
+gem 'sass'
+gem 'sinatra-assetpack', :require => 'sinatra/assetpack'
+gem 'octokit'
 
 group :development do
   gem "bundler", "~> 1.7"
@@ -21,4 +24,6 @@ group :development do
   gem "rack-minitest"
   gem "vcr"
   gem "webmock"
+  gem 'capybara'
+  gem 'launchy'
 end

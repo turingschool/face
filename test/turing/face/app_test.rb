@@ -3,13 +3,15 @@ require './lib/turing/face/app'
 
 class TuringFaceAppTest < Minitest::Test
   include Rack::Test::Methods
-
-  def setup
-    Turing::Face::DataStore.instance.clear
-  end
+  include Capybara::DSL
 
   def app
     Turing::Face::App
+  end
+
+  def setup
+    Turing::Face::DataStore.instance.clear
+    Capybara.app = app
   end
 
   def test_it_receives_post_data_from_github
@@ -40,7 +42,9 @@ class TuringFaceAppTest < Minitest::Test
       data = File.read('./test/support/sample_change.json')
       post '/changes', data, "CONTENT_TYPE" => "application/json"
 
-      get 'tutorials/projects/store_engine'
+      visit 'tutorials/projects/store_engine'
+      save_and_open_page
+      binding.pry
       assert last_response.ok?
       content = last_response.body
       refute content.include?("Second Change")

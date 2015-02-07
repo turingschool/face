@@ -1,6 +1,12 @@
 require 'bundler/setup'
+Bundler.require(:default)
 
 require 'sinatra/base'
+require 'sinatra/assetpack'
+require 'tilt/erb'
+require 'sass'
+require 'sass/plugin/rack'
+
 require 'json'
 require 'singleton'
 
@@ -11,8 +17,15 @@ require_relative 'render_pipeline'
 module Turing
   module Face
     class App < Sinatra::Base
+
+      configure do
+        set :erb, :layout => :'layouts/main'
+        set :views, './lib/turing/face/views/'
+
+      end
+
       get '/' do
-        'Hello world!'
+        erb :page, :locals => {:data => 'Hello, World!'}
       end
 
       post '/changes' do
@@ -38,7 +51,7 @@ module Turing
         data_store = DataStore.instance
         page = data_store.find(group, name)
         if page
-          page.body
+          erb :page, :locals => {:data => page.body}
         else
           status(404)
         end
